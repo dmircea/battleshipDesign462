@@ -52,6 +52,40 @@ void B_System::signup()
 	string pass;
 	cin >> pass;
 	user.password(pass);
+
+	//adding user to file
+	fstream userFile("user.txt", fstream::in | fstream::out | fstream::trunc);
+	
+	string word;
+	if (!userFile) {
+		std::cerr << "file open failed: " << "\n";
+	}
+
+	if (userFile.peek() == std::ifstream::traits_type::eof())
+	{
+		userFile << name << " " << pass << endl;
+	}
+	else
+	{
+		while (getline(userFile, word))
+		{
+			if (word == name)
+			{
+				cout << "Name already exists!\n";
+				cout << "Please enter your username: ";
+				cin >> name;
+				user.name(name);
+				cout << "Please enter your password: ";
+				cin >> pass;
+				user.password(pass);
+			}
+			if (userFile.eof())
+			{
+				userFile << name << " " << pass << endl;
+				userFile.close();
+			}
+		}
+	}
 }
 
 void B_System::login()
