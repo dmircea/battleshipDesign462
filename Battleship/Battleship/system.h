@@ -2,6 +2,7 @@
 #ifndef B_System_h
 #include"user.h"
 #include<iostream>
+#include<fstream>
 using namespace std;
 
 
