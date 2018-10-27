@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\userUI">
+      <UniqueIdentifier>{f97142f0-3db1-419b-80f0-e53e50a15d17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\userUI\playerUI">
+      <UniqueIdentifier>{65d5122b-d1e6-4b63-a538-578ba18dc7a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\userUI\adminUI">
+      <UniqueIdentifier>{3af60d4f-e157-4f00-80b8-e02007e3dc17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\userUI\playerUI\payment">
+      <UniqueIdentifier>{98c307ba-89ab-4f4a-b4e0-e314576fa3ff}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="authenticate.h">
+      <Filter>Header Files\userUI</Filter>
+    </ClInclude>
+    <ClInclude Include="system.h">
+      <Filter>Header Files\userUI</Filter>
+    </ClInclude>
+    <ClInclude Include="user.h">
+      <Filter>Header Files\userUI</Filter>
+    </ClInclude>
+    <ClInclude Include="adminTools.h">
+      <Filter>Header Files\userUI\adminUI</Filter>
+    </ClInclude>
+    <ClInclude Include="gameMaster.h">
+      <Filter>Header Files\userUI\playerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Battleship.h">
+      <Filter>Header Files\userUI\playerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="AI.h">
+      <Filter>Header Files\userUI\playerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="board.h">
+      <Filter>Header Files\userUI\playerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ships.h">
+      <Filter>Header Files\userUI\playerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="creditCard.h">
+      <Filter>Header Files\userUI\playerUI\payment</Filter>
+    </ClInclude>
+    <ClInclude Include="debitCard.h">
+      <Filter>Header Files\userUI\playerUI\payment</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
