@@ -17,6 +17,8 @@ public:
 	void login();
 private:
 	user user;
+	ifstream fin;
+	ofstream fout;
 };
 
 B_System::B_System()
@@ -55,24 +57,17 @@ void B_System::signup()
 	user.password(pass);
 
 	//adding user to file
-	fstream userFile("user.txt", fstream::in | fstream::out | fstream::trunc);
-	
-	string word;
-	if (!userFile) {
-		std::cerr << "file open failed: " << "\n";
-	}
 
-	if (userFile.peek() == std::ifstream::traits_type::eof())
+	fin.open("user.txt");
+	string word;
+	if (fin.is_open())
 	{
-		userFile << name << " " << pass << endl;
-	}
-	else
-	{
-		while (getline(userFile, word))
+
+		while (getline(fin, word, ' '))
 		{
 			if (word == name)
 			{
-				cout << "Name already exists!\n";
+				cout << "Sorry, name already exists!\n";
 				cout << "Please enter your username: ";
 				cin >> name;
 				user.name(name);
@@ -80,18 +75,32 @@ void B_System::signup()
 				cin >> pass;
 				user.password(pass);
 			}
-			if (userFile.eof())
-			{
-				userFile << name << " " << pass << endl;
-				userFile.close();
-			}
 		}
+		fin.close();
+	}
+
+	fout.open("user.txt", std::ofstream::out | std::ofstream::app);
+	if (fout.is_open())
+	{
+		fout << name << " " << pass << endl;
+		fout.close();
+	}
+	else
+	{
+		cout << "Error ";
 	}
 }
 
 void B_System::login()
 {
-
+	if (user.auth.validate(user.getName(), user.getPassword(), fin))
+	{
+		cout << "Login in Successfuly!\n";
+	}
+	else
+	{
+		cerr << "Login failed!\n";
+	}
 }
 
 #endif // !B_System_h
