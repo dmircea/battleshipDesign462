@@ -1,7 +1,8 @@
-#pragma once
+#pragma
 #ifndef user_h
 #include<iostream>
 #include<string>
+#include"authenticate.h"
 using namespace std;
 
 
@@ -13,10 +14,14 @@ public:
 	void name(string);
 	void password(string);
 	void ID();
+	string getName();
+	string getPassword();
+	string getID();
 	void printName();
+	authenticate auth;
 private:
 	string userName;
-	int userID;
+	string userID;
 	string userPassword;
 };
 
@@ -41,6 +46,21 @@ void user::password(string pass)
 void user::ID()
 {
 
+}
+
+string user::getName()
+{
+	return userName;
+}
+
+string user::getPassword()
+{
+	return userPassword;
+}
+
+string user::getID()
+{
+	return userID;
 }
 
 void user::printName()
