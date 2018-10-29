@@ -1,24 +1,31 @@
-#pragma
 #ifndef user_h
+#define user_h
+
 #include<iostream>
 #include<string>
-#include"authenticate.h"
+#include<vector>
+#include<fstream>
+//#include"authenticate.h"
 using namespace std;
-
 
 class user
 {
 public:
 	user();
+	user(string,string,string);
 	~user();
+
 	void name(string);
 	void password(string);
-	void ID();
+	void ID(string);
+	void createObj(ifstream&);
+
 	string getName();
 	string getPassword();
 	string getID();
-	void printName();
-	authenticate auth;
+
+//	authenticate auth;
+	vector<user> obj;
 private:
 	string userName;
 	string userID;
@@ -27,6 +34,14 @@ private:
 
 user::user()
 {
+
+}
+
+user::user(string user, string pass, string id)
+{
+	userName = user;
+	userPassword = pass;
+	userID = id;
 }
 
 user::~user()
@@ -43,9 +58,9 @@ void user::password(string pass)
 	userPassword = pass;
 }
 
-void user::ID()
+void user::ID(string id)
 {
-
+	userID = id;
 }
 
 string user::getName()
@@ -63,8 +78,14 @@ string user::getID()
 	return userID;
 }
 
-void user::printName()
+void user::createObj(ifstream& fin)
 {
-	cout << userName;
+	fin.open("user.txt");
+	string name,pass,id;
+	int i = 0;
+	while (fin >> name >> pass >> id)
+	{
+		obj.push_back(user(name, pass, id));
+	}
 }
 #endif // !user_h
