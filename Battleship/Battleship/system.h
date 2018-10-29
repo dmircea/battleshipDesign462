@@ -23,6 +23,7 @@ private:
 
 B_System::B_System()
 {
+
 }
 
 B_System::~B_System()
@@ -93,7 +94,10 @@ void B_System::signup()
 
 void B_System::login()
 {
-	if (user.auth.validate(user.getName(), user.getPassword(), fin))
+
+    cout << "Please input your username and password: ";
+
+	if (user.auth.validate(user.getName(), user.getPassword()))
 	{
 		cout << "Login in Successfuly!\n";
 	}
@@ -102,5 +106,6 @@ void B_System::login()
 		cerr << "Login failed!\n";
 	}
 }
+
 
 #endif // !B_System_h
