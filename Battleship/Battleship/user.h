@@ -5,9 +5,12 @@
 #include<random>
 #include<ctime>
 #include"authenticate.h"
+
 using namespace std;
 
 class B_System;
+
+
 
 class user
 {
@@ -16,20 +19,20 @@ public:
 	~user();
 	void name(string);
 	void password(string);
-	void createID();   // Should only be done once.
+	void ID(string);   // Should only be done once.
 	string getName();
 	string getPassword();
 	string getID();
 	void printName();
 	authenticate auth; //will be kept for the sake of the username and password.
-	//void setSys(B_System&);
-	//B_System* getSys();
+	void setSys(B_System*);
+	B_System* getSys();
 
 	void seeInterface();
 private:
      string actualName;
 	string userName;
-	string userID;
+	string userID = "player";
 	string userPassword;
 
 	UserUI_ABS * userInterface;	 //auth will be the original UI layer
@@ -56,19 +59,10 @@ void user::password(string pass)
 	userPassword = pass;
 }
 
-//  This function will clear the UserID member and randomly generate 8 digits between
-//  0 and 9 using the standard random number generator.
-void user::createID()
+
+void user::ID(string id)
 {
-    //TODO: creates random ID of size 8? contains numbers.
-    userID.clear();
-    srand(time(NULL));
-    int rnd = 0;
-    for (int i = 0; i < 8; ++i)
-    {
-	   rnd = rand() % 10;
-	   userID.append(to_string(rnd));
-    }
+    userID = id;
 
 }
 
@@ -92,12 +86,28 @@ void user::printName()
 	cout << userName;
 }
 
+void user::setSys(B_System* newSys)
+{
+    system = newSys;
+}
+
+B_System* user::getSys()
+{
+    return system;
+}
 
 //  Here is where all the functions will be called from the 
 //  UserUI_ABS type object. 
 void user::seeInterface()
 {
     //TODO: Create beginning for authenticate // sign-up and log-in.
+    UserUI_ABS * temp = userInterface;
 
+    int input = 0;
+    while (true)
+    {
+	   input = userInterface->showOptions();
+	   userInterface = userInterface->getChoice(input);
+    }
 }
 #endif // !user_h

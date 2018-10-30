@@ -34,6 +34,7 @@ void B_System::welcome()
 {
 	cout << "Hello and welcome to Battleship!\n";
 	cout << "Please create an accout or login.\n";
+	user.seeInterface();
 }
 
 void B_System::goodbye()
@@ -92,20 +93,20 @@ void B_System::signup()
 	}
 }
 
-void B_System::login()
-{
-
-    cout << "Please input your username and password: ";
-
-	if (user.auth.validate(user.getName(), user.getPassword()))
-	{
-		cout << "Login in Successfuly!\n";
-	}
-	else
-	{
-		cerr << "Login failed!\n";
-	}
-}
+//void B_System::login()
+//{
+//
+//    cout << "Please input your username and password: ";
+//
+//	if (user.auth.validate(user.getName(), user.getPassword()))
+//	{
+//		cout << "Login in Successfuly!\n";
+//	}
+//	else
+//	{
+//		cerr << "Login failed!\n";
+//	}
+//}
 
 
 #endif // !B_System_h
