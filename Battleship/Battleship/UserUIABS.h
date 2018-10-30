@@ -36,6 +36,7 @@ public:
     //  Same as above.
     virtual void seeServers() = 0;
     virtual void findPlayerByID() = 0;
+	virtual UserUI_ABS * serverMainteneance() = 0;
 };
 
 class PaymentUI_ABS : public PlayerUI_ABS
