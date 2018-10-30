@@ -20,7 +20,7 @@ public:
 	void signup();
 	void login();
 private:
-	user user;
+	user usr;
 	authenticate auth;
 	ifstream fin;
 	ofstream fout;
@@ -36,7 +36,7 @@ B_System::~B_System()
 
 void B_System::welcome()
 {
-	user.createObj(fin);
+	usr.createObj(fin);
 	cout << "Hello and welcome to Battleship!\n";
 	cout << "Please select an option\n";
 }
@@ -44,7 +44,7 @@ void B_System::welcome()
 void B_System::goodbye()
 {
 	cout << "Thanks for playing Battleship, ";
-	cout << user.getName();
+	cout << usr.getName();
 }
 
 void B_System::signup()
@@ -54,14 +54,14 @@ void B_System::signup()
 	cout << "Please enter your username: ";
 	string name;
 	cin >> name;
-	user.name(name);
+	usr.name(name);
 
 	cout << "Please enter your password: ";
 	string pass;
 	cin >> pass;
-	user.password(pass);
+	usr.password(pass);
 
-	user.ID("player");
+	usr.ID("player");
 
 	//adding user to file
 
@@ -76,10 +76,10 @@ void B_System::signup()
 				cout << "Sorry, name already exists!\n";
 				cout << "Please enter your username: ";
 				cin >> name;
-				user.name(name);
+				usr.name(name);
 				cout << "Please enter your password: ";
 				cin >> pass;
-				user.password(pass);
+				usr.password(pass);
 			}
 		}
 		fin.close();
@@ -88,7 +88,7 @@ void B_System::signup()
 	fout.open("user.txt", std::ofstream::out | std::ofstream::app);
 	if (fout.is_open())
 	{
-		fout << user.getName() << " " << user.getPassword() << " " << user.getID() << endl;
+		fout << usr.getName() << " " << usr.getPassword() << " " << usr.getID() << endl;
 		fout.close();
 	}
 	else
@@ -105,10 +105,12 @@ void B_System::login()
 	cout << "Password: ";
 	cin >> password;
 
-	if (auth.validate(username, password, user.obj))
+	vector<user> result = auth.validate(username, password, usr.obj);
+
+	if (result.size() > 0)
 	{
 		cout << "Login in Successfuly!\n";
-		if (user.getID() == "player")
+		if (result[0].getID() == "player")
 		{
 			gameMaster().showOptions();
 		}
