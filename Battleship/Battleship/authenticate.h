@@ -14,7 +14,7 @@ class authenticate : public user
 public:
 	authenticate();
 	~authenticate();
-	bool validate(std::string,std::string, std::vector<user>& obj);
+	vector<user> validate(std::string,std::string, std::vector<user>& obj);
 
 private:
 };
@@ -27,16 +27,17 @@ authenticate::~authenticate()
 {
 }
 
-bool authenticate::validate(std::string name, std::string pass, std::vector<user>& obj)
+vector<user> authenticate::validate(std::string name, std::string pass, std::vector<user>& obj)
 {
-
+	vector<user> r;
 	for (int i = 0; i < obj.size(); i++)
 	{
 		if (obj[i].getName() == name && obj[i].getPassword() == pass)
 		{
-			return true;
+			r.push_back(obj[i]);
+			return r;
 		}
 	}
-	return false;
+	return obj;
 }
 #endif // !Auth_h
