@@ -1,19 +1,22 @@
-#include"system.h"
+#include "system.h"
+#include "purchaseGame.h"
 #include<iostream>
 using namespace std;
 
 int main()
 {
 	B_System B_System;
+	purchaseGame Battleship;
+	Battleship.payment();
 	B_System.welcome();
 
 	cout << "1. Signup\n"
 		<< "2. Login\n"
 		<< "3. Exit\n";
-	
+
 	bool done = false;
 	int opt;
-	
+
 	while (!done)
 	{
 		cin >> opt;
@@ -30,6 +33,7 @@ int main()
 			done = true;
 			break;
 		}
+		
 	}
 	system("PAUSE");
 }
