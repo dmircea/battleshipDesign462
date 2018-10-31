@@ -42,7 +42,7 @@ int gameMaster::showOptions()
 	   << "2. Purchase games\n"
 	   //<< "3. Settings\n"
 	   //<< "4. Log out\n"
-	   << "3. Exit\n";
+	   << "5. Exit\n";
 	
     std::cin >> choice;
 
