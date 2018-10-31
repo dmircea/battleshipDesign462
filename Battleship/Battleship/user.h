@@ -10,8 +10,6 @@ using namespace std;
 
 class B_System;
 
-
-
 class user
 {
 public:
@@ -24,13 +22,13 @@ public:
 	string getPassword();
 	string getID();
 	void printName();
-	authenticate auth; //will be kept for the sake of the username and password.
 	void setSys(B_System*);
-	B_System* getSys();
-
 	void seeInterface();
+
+	authenticate auth; //will be kept for the sake of the username and password.
+	B_System* getSys();
 private:
-     string actualName;
+    string actualName;
 	string userName;
 	string userID = "player";
 	string userPassword;
