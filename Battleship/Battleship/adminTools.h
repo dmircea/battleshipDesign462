@@ -1,7 +1,6 @@
 #pragma once
 #include "UserUIABS.h"
-#include <thread>
-#include <ctime>
+#include<Windows.h>
 
 class adminTools : public AdminUI_ABS
 {
@@ -13,13 +12,13 @@ public:
 
     void seeServers() override;
     void findPlayerByID() override;
-	UserUI_ABS * serverMainteneance() override;
+	AdminUI_ABS* serverMainteneance() override;
+
 private:
 };
 
 adminTools::adminTools()
 {
-
 }
 adminTools::~adminTools()
 {
@@ -31,9 +30,9 @@ int adminTools::showOptions()
 	int choice = 0;
 	std::cout << "1. Server Maintenenace\n"
 		<< "2. Veiw servers\n"
-		<< "3. Find Player\n"
-		<< "4. Log out\n"
-		<< "5. Exit\n";
+		//<< "3. Find Player\n"
+		//<< "4. Log out\n"
+		<< "3. Exit\n";
 
 	std::cin >> choice;
 
@@ -77,19 +76,24 @@ void adminTools::findPlayerByID()
 
 }
 
-UserUI_ABS * adminTools::serverMainteneance()
+AdminUI_ABS* adminTools::serverMainteneance()
 {
-	std::string lenght;
-	std::string date;
-	std::string time;
-	bool maintenance = false;
+	int lenght;
+	char choice;
 
-	std::cout << "Enter the length, date and time: ";
-	std::cin >> lenght >> date >> time;
+	std::cout << "Enter the length: ";
+	std::cin >> lenght;
 
 	std::cout << "Performing server maintenance: "
-		<< "on " << date << " at " << time << " for " << lenght  << "min" << std::endl;
-	maintenance = true;
+		<< " for " << lenght  << " minutes." << std::endl;
+	std::cout << "proceed with the Server Maintenance? y/n ";
+	std::cin >> choice;
 
+	if (choice == 'y')
+	{
+		std::cout << "Performing system maintenance...\n";
+		lenght *= 60000;
+		Sleep(lenght);
+	}
 	return this;
 }
