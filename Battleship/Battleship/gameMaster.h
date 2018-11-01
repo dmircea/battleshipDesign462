@@ -1,9 +1,10 @@
 #pragma once
 #include<iostream>
 #include "UserUIABS.h"
+#include "Battleship.h"
 using namespace std;
 
-class gameMaster :  public PaymentUI_ABS
+class gameMaster :  public PlayerUI_ABS
 {
 public:
     gameMaster();
@@ -41,7 +42,7 @@ int gameMaster::showOptions()
     std::cout << "1. Play Battleship\n"
 	   << "2. Purchase games\n"
 	   //<< "3. Settings\n"
-	   //<< "4. Log out\n"
+	   << "4. Log out\n"
 	   << "5. Exit\n";
 	
     std::cin >> choice;
@@ -55,6 +56,7 @@ UserUI_ABS* gameMaster::getChoice(int choice)
     {
     case 1:
 	   std::cout << "Here goes battleship!" << std::endl;
+	   return new Battleship();
 	   break;
     case 2:
 		payment();
@@ -63,7 +65,8 @@ UserUI_ABS* gameMaster::getChoice(int choice)
 	   std::cout << "Here you will deal with minor settings!" << std::endl;
 	   break;
     case 4:
-
+	   std::cout << "Log out successful" << std::endl;
+	   return NULL;
 	   break;
     case 5:
 	   exit(0);

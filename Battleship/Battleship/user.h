@@ -99,13 +99,27 @@ B_System* user::getSys()
 void user::seeInterface()
 {
     //TODO: Create beginning for authenticate // sign-up and log-in.
-    UserUI_ABS * temp = userInterface;
+    UserUI_ABS * temp = &auth;
+
+
 
     int input = 0;
     while (true)
     {
 	   input = userInterface->showOptions();
+	   temp = userInterface;
 	   userInterface = userInterface->getChoice(input);
+
+	   if (temp != &auth && temp != userInterface)
+	   {
+		  delete temp;
+		  temp = userInterface;
+	   }
+
+	   if (userInterface == NULL)
+	   {
+		  userInterface = temp = &auth;
+	   }
     }
 }
 #endif // !user_h

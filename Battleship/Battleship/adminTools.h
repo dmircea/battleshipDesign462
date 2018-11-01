@@ -31,8 +31,8 @@ int adminTools::showOptions()
 	std::cout << "1. Server Maintenenace\n"
 		<< "2. Veiw servers\n"
 		//<< "3. Find Player\n"
-		//<< "4. Log out\n"
-		<< "3. Exit\n";
+		<< "4. Log out\n"
+		<< "5. Exit\n";
 
 	std::cin >> choice;
 
@@ -52,6 +52,7 @@ UserUI_ABS* adminTools::getChoice(int choice)
 		findPlayerByID();
 		break;
 	case 4:
+	     return NULL;
 		break;
 	case 5:
 		exit(0);
@@ -85,14 +86,14 @@ AdminUI_ABS* adminTools::serverMainteneance()
 	std::cin >> lenght;
 
 	std::cout << "Performing server maintenance: "
-		<< " for " << lenght  << " minutes." << std::endl;
+		<< " for " << lenght  << " seconds." << std::endl;
 	std::cout << "proceed with the Server Maintenance? y/n ";
 	std::cin >> choice;
 
 	if (choice == 'y')
 	{
 		std::cout << "Performing system maintenance...\n";
-		lenght *= 60000;
+		lenght *= 1000;
 		Sleep(lenght);
 	}
 	return this;

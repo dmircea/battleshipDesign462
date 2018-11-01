@@ -60,9 +60,14 @@ std::string authenticate::validate(std::string name, std::string pass)
 
     while (fin >> fromFile.username >> fromFile.password >> fromFile.userid)
     {
-	   if (fromFile.username == name && fromFile.password == pass)
+	   if (fromFile.username == name && fromFile.password == pass) 
+	   {
+		  fin.close();
 		  return fromFile.userid;
+	   }
     }
+
+    fin.close();
 
     return "no";
 }
@@ -72,6 +77,7 @@ int authenticate::showOptions()
 {
     int choice = ' ';
 
+    std::cout << "Please create an account or login.\n";
     std::cout << "1. Signup\n"
 	    << "2. Login\n"
 	    << "3. Exit\n";

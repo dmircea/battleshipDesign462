@@ -1,5 +1,6 @@
 #include"system.h"
 #include<iostream>
+#include "BattleshipFunct.h"
 using namespace std;
 
 int main()

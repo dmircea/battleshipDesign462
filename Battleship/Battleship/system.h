@@ -33,7 +33,6 @@ B_System::~B_System()
 void B_System::welcome()
 {
 	cout << "Hello and welcome to Battleship!\n";
-	cout << "Please create an accout or login.\n";
 	user.seeInterface();
 }
 
