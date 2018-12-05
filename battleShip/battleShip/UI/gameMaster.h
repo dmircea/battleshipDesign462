@@ -2,6 +2,8 @@
 #include<iostream>
 #include "Abstract/UserUIABS.h"
 #include "Battleship.h"
+#include "creditCard.h"
+
 using namespace std;
 
 class gameMaster :  public PlayerUI_ABS
