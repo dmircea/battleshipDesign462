@@ -167,53 +167,104 @@ char gameMaster::paymentScreen() {
 }
 char gameMaster::paymentSelection() {
 
-	string cardType;
-	string cardNumber;
-	string expirationDate;
-	string securityCode;
-	string name;
-	string billingAddr;
-	char checkOut;
+    string cardType;
+    string cardNumber;
+    string expirationDate;
+    string securityCode;
+    string name;
+    string billingAddr;
+    bool isVisa = false;
+    bool isInvalidCard = false;
+    char checkOut;
+    Credit creditPayment;
+    
 
-	cout << "Please select payment method" << endl;
-	cin.ignore();
-	getline(cin, cardType);
-	cout << "Card Number: " << endl;
-	cin.ignore();
-	getline(cin, cardNumber);
-	cout << "Expiration date :" << endl;
-	cin.ignore();
-	getline(cin, expirationDate);
-	cout << "Security Code: " << endl;
-	cin.ignore();
-	getline(cin, securityCode);
-	cout << endl;
+    cout << "Please select payment method..Credit or Debit?" << endl;
+    cin.ignore();
+    getline(cin, cardType);
+    cout << "Card Number: " << endl;
+    cin.ignore();
+    getline(cin, cardNumber);
 
-	cout << "Billing Information" << endl;
-	cout << "Name: ";
-	cin.ignore();
-	getline(cin, name);
-	cout << "Billing Address: ";
-	cin.ignore();
-	getline(cin, billingAddr);
 
-	cout << "Purchase game? y/" << endl;
-	cin >> checkOut;
+    if (cardType == "credit") {
+	   isVisa=creditPayment.validatePayment(cardType, cardNumber);
+	   
+    }
 
-	return checkOut;
+    if (cardType == "debit") {
+	   isVisa = true;
+    }
+
+ 
+
+
+    cout << "Expiration date :" << endl;
+    cin.ignore();
+    getline(cin, expirationDate);
+   
+   
+    if (isVisa == true) {
+	   cout << "Enter the 3 digit VISA Security Code: " << endl;
+	   cin.ignore();
+	   getline(cin, securityCode);
+	   cout << endl;
+    }
+    else {
+	   cout << "Enter the 4 digit American Express Security Code: " << endl;
+	   cin.ignore();
+	   getline(cin, securityCode);
+	   cout << endl;
+
+    }
+
+    if (isVisa) {
+
+	   //CardFactory * theFactory = CardFactory::createFactory();
+	   visaCard* customerCard = visaFactory::createObject(securityCode, cardNumber);
+	   customerCard->authorize();
+	  
+	   delete customerCard;
+	  // delete theFactory;
+	   
+    }
+    else {
+	   amexCard* customerCard = amexFactory::createObject(securityCode, cardNumber);
+	   customerCard->authorize();
+
+	   delete customerCard;
+
+    }
+
+
+
+    cout << "Billing Information" << endl;
+    cout << "Name: ";
+    cin.ignore();
+    getline(cin, name);
+    cout << "Billing Address: ";
+    cin.ignore();
+    getline(cin, billingAddr);
+
+    cout << "Purchase game? y/n" << endl;
+    cin >> checkOut;
+
+   
+
+    return checkOut;
 }
 
 void gameMaster::confirmationScreen() {
 
-	cout << " *******************************************************" << endl;
-	cout << " ***      Thank you for purchasing Battleship!       ***" << endl;
-	cout << " *******************************************************" << endl;
-	cout << " *                                                     *" << endl;
-	cout << " *  An email confirmation has been sent to you.        *" << endl;
-	cout << " *                                                     *" << endl;
-	cout << " *  You may download the game from the game library.   *" << endl;
-	cout << " *                                                     *" << endl;
-	cout << " *******************************************************" << endl;
+    cout << " *******************************************************" << endl;
+    cout << " ***      Thank you for purchasing Battleship!       ***" << endl;
+    cout << " *******************************************************" << endl;
+    cout << " *                                                     *" << endl;
+    cout << " *  An email confirmation has been sent to you.        *" << endl;
+    cout << " *                                                     *" << endl;
+    cout << " *  You may download the game from the game library.   *" << endl;
+    cout << " *                                                     *" << endl;
+    cout << " *******************************************************" << endl;
 
 
 }
