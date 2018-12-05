@@ -41,7 +41,7 @@ void Ships::setCoord(int x, int y)
 
 void Ships::printShip()
 {
-    std::cout << _shipName << " " << _position << " " << _coord[0] << _coord[1];
+    std::cout << _shipName << " " << _position << " " << _coord[0] << ", " << _coord[1] << std::endl;
 }
 
 void Ships::hit()

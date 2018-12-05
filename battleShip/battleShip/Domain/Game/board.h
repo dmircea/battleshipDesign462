@@ -20,8 +20,8 @@ public:
 private:
     int boardSize = 20;
     int boardMap[20][20];
+	int idx = 0;
 	std::vector<Ships*>* ship;
-    //Ships * navy[5];
     int shipsPlaced = 0;
 };
 
@@ -91,35 +91,69 @@ bool Board::placeShip(int vertical, int horizontal, int choice)
     }
 
 	std::string direction;
-	Ships* aircraft; 
+	Ships* s1;
+	Ships* s2;
+	Ships* s3;
+	Ships* s4;
+	Ships* s5;
 
 	switch (choice)
 	{
 	case 1:
-		aircraft = new AircraftCarrier();
+		s1 = new AircraftCarrier();
 		std::cout << "Insert direction (v or h): " << std::endl;
 		std::cin >> direction;
-		aircraft->setPoistion(direction);
-		aircraft->setCoord(vertical, horizontal);
-		ship->push_back(aircraft);
-		ship->at(0)->printShip();
+		s1->setPoistion(direction);
+		s1->setCoord(vertical, horizontal);
+		ship->push_back(s1);
+		ship->at(idx)->printShip();
+		//idx++;
 			break;
 	case 2:
-		//ship->at(0)
+		s2 = new Batship();
+		std::cout << "Insert direction (v or h): " << std::endl;
+		std::cin >> direction;
+		s2->setPoistion(direction);
+		s2->setCoord(vertical, horizontal);
+		ship->push_back(s2);
+		ship->at(idx)->printShip();
+		//idx++;
 			break;
 	case 3:
-		//ship->at(0)
+		s3 = new Submarine();
+		std::cout << "Insert direction (v or h): " << std::endl;
+		std::cin >> direction;
+		s3->setPoistion(direction);
+		s3->setCoord(vertical, horizontal);
+		ship->push_back(s3);
+		ship->at(idx)->printShip();
+		//idx++;
 			break;
 	case 4:
-		//ship->at(0)
+		s4 = new Cruiser();
+		std::cout << "Insert direction (v or h): " << std::endl;
+		std::cin >> direction;
+		s4->setPoistion(direction);
+		s4->setCoord(vertical, horizontal);
+		ship->push_back(s4);
+		ship->at(idx)->printShip();
+		//idx++;
 			break;
 	case 5:
-		//ship->at(0)
+		s5 = new Destroyer();
+		std::cout << "Insert direction (v or h): " << std::endl;
+		std::cin >> direction;
+		s5->setPoistion(direction);
+		s5->setCoord(vertical, horizontal);
+		ship->push_back(s5);
+		ship->at(idx)->printShip();
+		//idx++;
 			break;
 	default:
 		break;
 	}
 
+	idx++;
     std::cout << "You placed a ship!" << std::endl;
     boardMap[horizontal -1][vertical -1] = 1;
 
